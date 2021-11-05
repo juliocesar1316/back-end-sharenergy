@@ -2,6 +2,7 @@ const express = require("express");
 const dadosUsina = require("./controladores/dadosUsinas");
 const dadosCliente = require("./controladores/dadosClientes");
 const dadosInvestimento = require("./controladores/dadosInvestimento");
+const usuarios = require("./controladores/user");
 
 const rotas = express();
 
@@ -20,5 +21,7 @@ rotas.post("/investimento", dadosInvestimento.cadastroInvestimento);
 rotas.get("/investimento", dadosInvestimento.listaInvestimento);
 rotas.put("/investimento/:id", dadosInvestimento.editInvestimento);
 rotas.delete("/investimento/:id", dadosInvestimento.excluirInvestimento);
+
+rotas.get("/user", usuarios.usuario);
 
 module.exports = rotas;
