@@ -51,10 +51,10 @@ const cadastroInvestimento = async (req, res) => {
 };
 
 const editInvestimento = async (req, res) => {
-  const { numerocliente, usinaid, percentualdeparticipacao } = req.body;
+  const { percentualdeparticipacao } = req.body;
   const { id } = req.params;
 
-  if (!numerocliente && !usinaid && !percentualdeparticipacao) {
+  if (!percentualdeparticipacao) {
     return res
       .status(404)
       .json("Informe ao menos um campo para atualizaçao do investimento");
@@ -66,7 +66,7 @@ const editInvestimento = async (req, res) => {
       return res.status(404).json("Investimento não encontrado");
     }
     const investimentoAtualizado = await knex("participacaousinas")
-      .update({ numerocliente, usinaid, percentualdeparticipacao })
+      .update({ percentualdeparticipacao })
       .where({ id });
 
     if (!investimentoAtualizado) {
