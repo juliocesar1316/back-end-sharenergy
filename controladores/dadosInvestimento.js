@@ -37,15 +37,6 @@ const cadastroInvestimento = async (req, res) => {
   }
 
   try {
-    const confirmaInvestimento = await knex("participacaousinas")
-      .where({ numerocliente, usinaid })
-      .first();
-    if (!confirmaInvestimento) {
-      return res
-        .status(404)
-        .json("Investimento correspondente ao id não encontrado");
-    }
-
     const participacao = await knex("participacaousinas")
       .insert({ numerocliente, usinaid, percentualdeparticipacao })
       .returning("*");
