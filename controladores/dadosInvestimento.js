@@ -38,7 +38,7 @@ const cadastroInvestimento = async (req, res) => {
 
   try {
     const confirmaInvestimento = await knex("participacaousinas")
-      .where({ id: usinaid })
+      .where({ numerocliente, usinaid })
       .first();
     if (!confirmaInvestimento) {
       return res
